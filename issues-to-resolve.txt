@@ -1,0 +1,11 @@
+- fix parser not taking in empty spaces
+- fix lists in extd_cstd
+- check for possible pointer mismanagement
+- work on art program and level editor
+- add camera to game props 
+- remove need for renderer to be passed in function arguments through passing props instead of cam
+- event functions possibly lead to memory leaks so check hash table and create replace function or reuse ht in props 
+- config file memory leaks
+- work on better resource management
+- add polygons/rounded rects
+- add colorkeying in textures before surface

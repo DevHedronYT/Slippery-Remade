@@ -1,0 +1,28 @@
+include ./config.ninja
+include ./tools/flags.ninja
+include ./tools/${PLATFORM}.ninja
+include ./tools/${TARGET}.ninja
+
+#### util lib 
+build ${OBJ_PATH}/utils.obj: CC ${UTILS_PATH}/utils.c
+build ${OBJ_PATH}/utils.a:   AR ${OBJ_PATH}/utils.obj
+
+#### engine
+build ${OBJ_PATH}/engine.obj: CC ${ENGINE_PATH}/engine.c 
+build ${OBJ_PATH}/engine.a: AR ${OBJ_PATH}/engine.obj
+
+#### sdl_gfx
+build ${OBJ_PATH}/rate.obj:   CC ${SDL_GFX_PATH}/SDL2_framerate.c
+build ${OBJ_PATH}/prim.obj:   CC ${SDL_GFX_PATH}/SDL2_gfxPrimitives.c
+build ${OBJ_PATH}/filter.obj: CC ${SDL_GFX_PATH}/SDL2_imageFilter.c
+build ${OBJ_PATH}/roto.obj:   CC ${SDL_GFX_PATH}/SDL2_rotozoom.c
+build ${OBJ_PATH}/sdl_gfx.a: AR ${OBJ_PATH}/rate.obj ${OBJ_PATH}/prim.obj $
+                                ${OBJ_PATH}/filter.obj ${OBJ_PATH}/roto.obj
+
+build ${OUT}: LINK ${OBJ_PATH}/program.a ${OBJ_PATH}/utils.a ${OBJ_PATH}/engine.a ${OBJ_PATH}/sdl_gfx.a
+
+build app: phony ${OUT}
+
+default app
+
+

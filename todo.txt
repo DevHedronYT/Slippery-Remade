@@ -1,0 +1,2 @@
+- Add background images for buttons
+- Add animation in menu

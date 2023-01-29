@@ -1,0 +1,21 @@
+{
+    "env": {
+        "myDefaultIncludePath": ["${workspaceFolder}/src/engine", "${workspaceFolder}/src/engine/utils", "${workspaceFolder}/src/engine/SDL2", "${workspaceFolder}/src", "${workspaceFolder}/src/st8_funcs", "${workspaceFolder}/src/st8_funcs/component_funcs", "${workspaceFolder}/src/st8_funcs/event_funcs"],
+        "myCompilerPath": "C:/MinGW/bin/gcc"
+      },
+      "configurations": [
+        {
+          "intelliSenseMode": "clang-x64",
+          "includePath": ["${myDefaultIncludePath}"],
+          "compilerPath": "C:/MinGW/bin/gcc",
+          "cStandard": "c11",
+          "browse": {
+            "path": ["${workspaceFolder}/*"],
+            "limitSymbolsToIncludedHeaders": true,
+            "databaseFilename": ""
+          }
+        }
+      ],
+      "version": 4
+
+}

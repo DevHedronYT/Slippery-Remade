@@ -1,0 +1,8 @@
+# available platforms: M1, WIN, WEB
+PLATFORM=WIN
+# available targets: game, art
+TARGET=game
+# TERM_TYPE can be ANSI or NO_ANSI depending on if
+# terminal is able to display colors using ANSI
+# codes
+TERM_TYPE=ANSI

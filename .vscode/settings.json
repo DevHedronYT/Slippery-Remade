@@ -1,0 +1,10 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "engine.h": "c",
+        "game.h": "c",
+        "components.h": "c",
+        "st8_funcs.h": "c",
+        "events.h": "c"
+    }
+}

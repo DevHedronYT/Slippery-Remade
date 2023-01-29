@@ -1,0 +1,12 @@
+build ${OBJ_PATH}/program.obj: CC src/main.c
+build ${OBJ_PATH}/st8_funcs.obj: CC src/st8_funcs/st8_funcs.c
+build ${OBJ_PATH}/components.obj: CC src/st8_funcs/component_funcs/components.c
+build ${OBJ_PATH}/events.obj: CC src/st8_funcs/event_funcs/events.c
+build ${OBJ_PATH}/game.obj: CC src/game.c
+
+build ${OBJ_PATH}/program.a: AR ${OBJ_PATH}/program.obj $
+                                ${OBJ_PATH}/st8_funcs.obj $
+                                ${OBJ_PATH}/events.obj $
+                                ${OBJ_PATH}/components.obj $
+                                ${OBJ_PATH}/game.obj
+

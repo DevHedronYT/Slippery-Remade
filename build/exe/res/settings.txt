@@ -1,0 +1,10 @@
+title: [Slippery_Remade_2023];
+size: [1280, 720];
+renderer_accel: [1];
+fps: [60];
+vsync: [0];
+resizable: [1];
+move_left : [4, 80];
+move_right : [7, 79];
+jump : [44, 82];
+retry : [21];
