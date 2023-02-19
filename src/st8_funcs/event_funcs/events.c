@@ -29,4 +29,9 @@ void game_events_handle_keys_in_play(game_state_t * s, gsdl_props_t * p) {
     if (p -> keys_pressed[SDL_SCANCODE_ESCAPE]) {
         p -> game_stage = 0;
     }
+
+    s -> player_obj.move_l = gsdl_check_keyboard_action(p, &s -> player_events, "move_left");
+    s -> player_obj.move_r = gsdl_check_keyboard_action(p, &s -> player_events, "move_right");
+    // change game_state?
+    
 } 

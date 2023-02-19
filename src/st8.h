@@ -13,7 +13,7 @@
 
         gsdl_ui_label_t menu_game_title;
 
-        gsdl_img_t menu_bg; 
+        gsdl_img_t menu_btn_bg; 
 
         gsdl_ui_label_t menu_slip_away_btn_text;
         gsdl_phys_obj_t menu_slip_away_btn;
@@ -23,6 +23,19 @@
 
         gsdl_ui_label_t menu_exit_btn_text;
         gsdl_phys_obj_t menu_exit_btn;
+
+        // actual game
+        gsdl_cam_t camera;
+
+        char * player_state; 
+        gsdl_phys_obj_t player_obj;
+        gsdl_img_t player_img;
+        f32 player_stretch;
+        v2_t max_player_dimensions;
+        v2_t min_player_dimensions;
+
+        ht_t player_events;
+
     } game_state_t; 
 
     typedef struct {

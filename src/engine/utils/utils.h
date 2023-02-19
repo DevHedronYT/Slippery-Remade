@@ -47,7 +47,7 @@
     } file_info_t;
 
     i08 file_exists(const char * path);
-    file_info_t txt_file_query(const char * path);
+    file_info_t * txt_file_query(const char * path);
     i08 txt_file_write(const char * content, const char * path, const size_t len); 
 
     typedef struct {

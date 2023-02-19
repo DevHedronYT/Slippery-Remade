@@ -15,7 +15,7 @@ u08 log_debug_stats_at_interval(gsdl_props_t * p, gsdl_timer_t * timer, u08 stat
     return stats_logged;
 }
 
-void animate_main_menu_btn(gsdl_phys_obj_t * btn, f32 * position_delta, f32 initial_y_val, f64 dt) {
+void animate_play_btn(gsdl_phys_obj_t * btn, f32 * position_delta, f32 initial_y_val, f64 dt) {
     if (dt < 1) {
         if (btn -> pos.y <= initial_y_val) {
             *position_delta = 1;
@@ -29,4 +29,30 @@ void animate_main_menu_btn(gsdl_phys_obj_t * btn, f32 * position_delta, f32 init
 
 
     }
+}
+
+void update_ui_label_centered_with_phys_obj(gsdl_ui_label_t * label, gsdl_phys_obj_t * obj) {
+    label -> pos.x = obj -> pos.x + obj -> w / 2;
+    label -> pos.y = obj -> pos.y + obj -> h / 2;
+    gsdl_center_ui_label(label);
+}
+
+void animate_player(gsdl_phys_obj_t * player, f32 * increment, v2_t min_player_dimension, v2_t max_player_dimension, f64 dt) {
+    if (player -> w <= max_player_dimension.x && player -> h <= max_player_dimension.y && *increment != -0.75) {
+        *increment = 0.75;
+    } 
+    
+    if (player -> w >= max_player_dimension.x && player -> h >= max_player_dimension.y) {
+        *increment = -0.75;
+    }
+
+    if (*increment == -0.75) {
+        if (player -> w <= min_player_dimension.x && player -> h <= min_player_dimension.y) {
+            *increment = 0.75;
+        }
+
+    }
+
+    player -> w += *increment * dt;
+    player -> h += *increment * dt;
 }

@@ -10,26 +10,26 @@ i08 file_exists(const char * path) {
 }
 
 // Maximum readable size is 2 GB
-file_info_t txt_file_query(const char * path) {
+file_info_t * txt_file_query(const char * path) {
     assert(path != NULL);
     FILE * f = fopen(path, "rb");
     assert(f != NULL);
 
-    file_info_t file;
-    file.path = path;
+    file_info_t * file = calloc(1, sizeof(file_info_t));
+    file -> path = path;
 
     assert(fseek(f, 0, SEEK_END) == 0);
 
-    file.len = ftell(f);
-    assert(file.len != 0);
+    file -> len = ftell(f);
+    assert(file -> len != 0);
 
-    file.content = calloc(file.len + 1, sizeof(char));
-    assert(file.content != NULL);
+    file -> content = calloc(file -> len + 1, sizeof(char));
+    assert(file -> content != NULL);
     
     assert(fseek(f, 0, SEEK_SET) == 0);
     
-    assert(fread(file.content, sizeof(char), file.len, f) == file.len);
-    file.content[file.len + 1] = '\0';
+    assert(fread(file -> content, sizeof(char), file -> len, f) == file -> len);
+    file -> content[file -> len + 1] = '\0';
     
     assert(fclose(f) == 0);
     return file;
@@ -855,7 +855,8 @@ i32 str_to_i32(char * string) {
 
 config_file_t parse_config_file(const char * filepath) {
     config_file_t config = {0};
-    config.file = txt_file_query(filepath);
+    // problems here?
+    config.file = *txt_file_query(filepath);
     char * str = config.file.content;
     for (u64 u = 0; u < strlen(str); u++) {
         if (!isalnum(str[u]) && isalnum(str[u - 1]) && !isdigit(str[u]) && str[u] != '_') {

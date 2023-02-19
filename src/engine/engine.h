@@ -124,8 +124,8 @@
         v2_t vel; // Velocity 
         v2_t acc; // Acceleration
         f32 y_momentum;
-        u16 w;         // Width
-        u16 h;         // Height
+        f32 w;         // Width
+        f32 h;         // Height
         u08 coll_l;    // Left Collision
         u08 coll_r;    // Right Collision
         u08 coll_b;    // Bottom Collision

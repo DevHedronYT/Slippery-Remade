@@ -968,11 +968,11 @@ void * gsdl_get_entt_comp_data(gsdl_entt_manager_t * e_m, char * e_name, char * 
 u08 gsdl_check_keyboard_action(gsdl_props_t * props, ht_t * action_keys, char * action) {
     u32 * keys = ht_get(action_keys, action);
     u32 num_keys = keys[0];
-    for (u32 u = 0; u < num_keys; u++) {
+    for (u32 u = 1; u < num_keys; u++) {
         if (props -> keys_pressed[keys[u]]) {
             return 1;
         }
-    }
+    } 
 
     return 0;
 }
@@ -988,11 +988,23 @@ void gsdl_start_event_handling(gsdl_props_t * props) {
     SDL_PollEvent(&props -> event);
     props -> keys_pressed = SDL_GetKeyboardState(NULL);
     ht_t game_events = ht_create(8);
+    i32 key_handled = 0;
+    i32 keydown_exists = 0;
     for (u32 u = 0; u < event_num; u++) {
         if (game_event_codes[u] == props -> event.type) {
             ht_insert(&game_events, game_event_strings[u], (void *)1);            
+            if (props -> event.type == SDL_KEYDOWN) {
+                key_handled = 1;
+            }
         }
+        if (strcmp(game_event_strings[u], "SDL_KEYDOWN") == 0) {
+            keydown_exists = 1;
+        } 
     }
+    if (!key_handled && keydown_exists) {
+        ht_insert(&game_events, "SDL_KEYDOWN", (void *)1);            
+    }
+
     props -> selected_game_type_events = game_events;
     // OR REUSE THE HASH TABLE IF MEMORY LEAKS HAPPEN
 }

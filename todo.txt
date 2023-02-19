@@ -1,2 +1,38 @@
-- Add background images for buttons
-- Add animation in menu
+- Work on adding glow using surfaces 
+- Also work on adding primitives and a physics engine
+-  look at ironscorpion's engine and check out the maths for polygonal rendering
+
+
+- issues 
+    - fix parser not taking in empty spaces
+    - fix lists in extd_cstd
+    - check for possible pointer mismanagement
+    - work on art program and level editor
+    - add camera to game props 
+    - remove need for renderer to be passed in function arguments through passing props instead of cam
+    - event functions possibly lead to memory leaks so check hash table and create replace function or reuse ht in props 
+    - config file memory leaks
+    - work on better resource management
+    - add polygons/rounded rects
+    - add colorkeying in textures before surface
+    - fix file api as it returns a stack allocated variable 
+    - add opengl shaders
+    - add a physics engine
+    - config file ptr dereference
+
+
+- project plan:
+    - implement movement:
+        - left and Right
+        - slipping
+        
+    - implement platforms and different tiles in the levels
+        - coins
+        - fire
+        - handle collisions
+    - implement different tile behaviours
+    - implement game juice:
+        - timer
+        - level end screen
+        - game saving
+    - particles
